@@ -1,7 +1,7 @@
 {
   "name": "hotel-booking-system",
   "version": "1.0.0",
-  "description": "Hotel Booking System",
+  "description": "",
   "homepage": "https://github.com/phasehumans/hotel-booking-system#readme",
   "bugs": {
     "url": "https://github.com/phasehumans/hotel-booking-system/issues"
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/phasehumans/hotel-booking-system.git"
   },
   "license": "ISC",
-  "author": "chaitanya",
+  "author": "",
   "type": "module",
   "main": "index.js",
   "scripts": {
@@ -19,15 +19,8 @@
     "dev": "nodemon index.js"
   },
   "dependencies": {
-    "@prisma/client": "^5.21.0",
     "bcrypt": "^6.0.0",
     "cors": "^2.8.6",
-    "dotenv": "^17.2.3",
-    "express": "^5.2.1",
-    "jsonwebtoken": "^9.0.3",
-    "zod": "^4.3.6"
-  },
-  "devDependencies": {
-    "prisma": "^7.3.0"
+    "express": "^5.2.1"
   }
 }
