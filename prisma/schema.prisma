@@ -1,0 +1,113 @@
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+
+model User {
+  id        String    @id @default(cuid()) @db.VarChar(255)
+  name      String    @db.VarChar(255)
+  email     String    @unique @db.VarChar(255)
+  password  String    @db.VarChar(255)
+  role      Role
+  phone     String?   @db.VarChar(20)
+  createdAt DateTime  @default(now()) @map("created_at")
+
+  hotels    Hotel[]
+  bookings  Booking[]
+  reviews   Review[]
+
+  @@map("users")
+}
+
+model Hotel {
+  id           String    @id @default(cuid()) @db.VarChar(255)
+  ownerId     String?   @map("owner_id") @db.VarChar(255)
+  name         String    @db.VarChar(255)
+  description  String?
+  city         String    @db.VarChar(100)
+  country      String    @db.VarChar(100)
+  amenities    Json      @default("[]")
+  rating       Decimal   @default(0.0) @db.Decimal(2,1)
+  totalReviews Int       @default(0) @map("total_reviews")
+  createdAt    DateTime  @default(now()) @map("created_at")
+
+  owner    User?    @relation(fields: [ownerId], references: [id])
+  rooms    Room[]
+  bookings Booking[]
+  reviews  Review[]
+
+  @@map("hotels")
+}
+
+model Room {
+  id             String    @id @default(cuid()) @db.VarChar(255)
+  hotelId       String    @map("hotel_id") @db.VarChar(255)
+  roomNumber    String    @map("room_number") @db.VarChar(50)
+  roomType      String    @map("room_type") @db.VarChar(100)
+  pricePerNight Decimal   @map("price_per_night") @db.Decimal(10,2)
+  maxOccupancy  Int       @map("max_occupancy")
+  createdAt     DateTime  @default(now()) @map("created_at")
+
+  hotel   Hotel    @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+  bookings Booking[]
+
+  @@unique([hotelId, roomNumber])
+  @@map("rooms")
+}
+
+model Booking {
+  id           String     @id @default(cuid()) @db.VarChar(255)
+  userId      String     @map("user_id") @db.VarChar(255)
+  roomId      String     @map("room_id") @db.VarChar(255)
+  hotelId     String     @map("hotel_id") @db.VarChar(255)
+  checkIn     DateTime   @map("check_in_date") @db.Date
+  checkOut    DateTime   @map("check_out_date") @db.Date
+  guests       Int
+  totalPrice  Decimal    @map("total_price") @db.Decimal(10,2)
+  status       BookingStatus @default(confirmed)
+  bookingDate DateTime   @default(now()) @map("booking_date")
+  cancelledAt DateTime?  @map("cancelled_at")
+
+  user   User   @relation(fields: [userId], references: [id])
+  room   Room   @relation(fields: [roomId], references: [id])
+  hotel  Hotel  @relation(fields: [hotelId], references: [id])
+  review Review?
+
+  @@map("bookings")
+}
+
+model Review {
+  id        String   @id @default(cuid()) @db.VarChar(255)
+  userId   String   @map("user_id") @db.VarChar(255)
+  hotelId String   @map("hotel_id") @db.VarChar(255)
+  bookingId String  @unique @map("booking_id") @db.VarChar(255)
+  rating    Int
+  comment   String?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user    User    @relation(fields: [userId], references: [id])
+  hotel  Hotel  @relation(fields: [hotelId], references: [id])
+  booking Booking @relation(fields: [bookingId], references: [id])
+
+  @@unique([userId, bookingId])
+  @@map("reviews")
+}
+
+
+enum Role {
+  customer
+  owner
+}
+
+enum BookingStatus {
+  confirmed
+  cancelled
+}
+
+
