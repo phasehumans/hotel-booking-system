@@ -8,3 +8,22 @@ export const signupSchema = z.object({
     phone: z.string().min(10).max(10)
 })
 
+export const loginSchema = z.object({
+
+})
+
+export const createHotelSchema = z.object({
+
+})
+
+export const addRoomSchema = z.object({
+
+})
+
+export const createBookingSchema = z.object({
+
+})
+
+export const createReviewSchema = z.object({
+    
+})
