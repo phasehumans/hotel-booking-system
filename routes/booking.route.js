@@ -1,6 +1,6 @@
 import {Router} from "express"
-import { cancelBooking, createBooking, getBookings } from "../controllers/booking.controller"
-import { authMiddleware, checkCustomer } from "../middleware/auth.middleware"
+import { cancelBooking, createBooking, getBookings } from "../controllers/booking.controller.js"
+import { authMiddleware, checkCustomer } from "../middleware/auth.middleware.js"
 
 const bookingRouter = Router()
 
