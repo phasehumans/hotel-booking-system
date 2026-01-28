@@ -1,6 +1,5 @@
-import {Router} from "express"
-import { getProfile, login, signup } from "../controllers/auth.controller.js"
-import { authMiddleware } from "../middleware/auth.middleware.js"
+import { Router } from 'express'
+import { login, signup } from '../controllers/auth.controller.js'
 
 const authRouter = Router()
 
