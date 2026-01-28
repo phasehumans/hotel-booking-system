@@ -1,7 +1,7 @@
-import { success } from "zod"
 import { pool } from "../config/db.js"
 import { signupSchema } from "../utils/validation.js"
 import bcrypt from "bcrypt"
+import { randomUUID } from "crypto";
 
 
 export const signup = async(req, res) => {
@@ -20,14 +20,16 @@ export const signup = async(req, res) => {
 
     try {
         const hashPassword = await bcrypt.hash(password, 10)
+        const id = randomUUID();
 
         const query = `
-            INSERT INTO users (name, email, password, role, phone)
-            VALUES ($1, $2, $3, $4, $5)
+            INSERT INTO users (id, name, email, password, role, phone)
+            VALUES ($1, $2, $3, $4, $5, $6)
             RETURNING id, name, email, role, phone, created_at
         `
 
         const values = [
+            id,
             name,
             email.toLowerCase(),
             hashPassword,
