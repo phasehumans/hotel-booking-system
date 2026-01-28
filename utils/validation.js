@@ -1,4 +1,3 @@
-import e from 'express'
 import { z } from 'zod'
 
 export const signupSchema = z.object({
@@ -22,8 +21,17 @@ export const createHotelSchema = z.object({
   amenities: z.array(z.string()).min(1),
 })
 
-export const addRoomSchema = z.object({})
+export const addRoomSchema = z.object({
+  roomNumber: z.string().min(1),
+  roomType: z.string().min(1),
+  pricePerNight: z.number().int().positive(),
+  maxOccupancy: z.number().int().positive()
+})
 
-export const createBookingSchema = z.object({})
+export const createBookingSchema = z.object({
+  
+})
 
-export const createReviewSchema = z.object({})
+export const createReviewSchema = z.object({
+
+})
