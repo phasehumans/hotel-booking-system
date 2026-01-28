@@ -1,3 +1,4 @@
+import e from "express"
 import {z} from "zod"
 
 export const signupSchema = z.object({
@@ -14,7 +15,11 @@ export const loginSchema = z.object({
 })
 
 export const createHotelSchema = z.object({
-
+    name: z.string().min(3),
+    description: z.string(),
+    city: z.string(),
+    country: z.string(),
+    amenities: z.array(z.string()).min(1)
 })
 
 export const addRoomSchema = z.object({

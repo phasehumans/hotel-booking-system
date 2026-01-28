@@ -31,7 +31,7 @@ export const checkOwner = async (req, res, next) => {
   const role = req.role;
 
   try {
-    if (role.toLowerCase() != "owner") {
+    if (role.toLowerCase() !== "owner") {
       return res.status(403).json({
         success: false,
         message: "unauthorized access; owner only",
@@ -53,7 +53,7 @@ export const checkCustomer = async (req, res, next) => {
   const role = req.role;
 
   try {
-    if (role.toLowerCase() != "customer") {
+    if (role.toLowerCase() !== "customer") {
       return res.status(403).json({
         success: false,
         message: "unauthorized access; customer only",
