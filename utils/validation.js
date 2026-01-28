@@ -1,35 +1,29 @@
-import e from "express"
-import {z} from "zod"
+import e from 'express'
+import { z } from 'zod'
 
 export const signupSchema = z.object({
-    name: z.string().min(3).max(15),
-    email: z.string().email(),
-    password: z.string().min(3).max(20),
-    role: z.enum(["customer", "owner"]),
-    phone: z.string()
+  name: z.string().min(3).max(15),
+  email: z.string().email(),
+  password: z.string().min(3).max(20),
+  role: z.enum(['customer', 'owner']),
+  phone: z.string(),
 })
 
 export const loginSchema = z.object({
-    email: z.string().email(),
-    password: z.string().min(3).max(20)
+  email: z.string().email(),
+  password: z.string().min(3).max(20),
 })
 
 export const createHotelSchema = z.object({
-    name: z.string().min(3),
-    description: z.string(),
-    city: z.string(),
-    country: z.string(),
-    amenities: z.array(z.string()).min(1)
+  name: z.string().min(3),
+  description: z.string(),
+  city: z.string(),
+  country: z.string(),
+  amenities: z.array(z.string()).min(1),
 })
 
-export const addRoomSchema = z.object({
+export const addRoomSchema = z.object({})
 
-})
+export const createBookingSchema = z.object({})
 
-export const createBookingSchema = z.object({
-
-})
-
-export const createReviewSchema = z.object({
-    
-})
+export const createReviewSchema = z.object({})

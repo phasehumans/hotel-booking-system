@@ -1,6 +1,6 @@
-import {Router} from "express"
-import { addRoom, createHotel, getHotelById, getHotels } from "../controllers/hotel.controller.js"
-import { authMiddleware, checkOwner } from "../middleware/auth.middleware.js"
+import { Router } from 'express'
+import { addRoom, createHotel, getHotelById, getHotels } from '../controllers/hotel.controller.js'
+import { authMiddleware, checkOwner } from '../middleware/auth.middleware.js'
 
 const hotelRouter = Router()
 
