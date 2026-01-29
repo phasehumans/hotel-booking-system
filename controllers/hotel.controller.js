@@ -48,12 +48,12 @@ export const createHotel = async (req, res) => {
 export const addRoom = async (req, res) => {
   const parseData = addRoomSchema.safeParse(req.body)
 
-  if(!parseData.success){
+  if (!parseData.success) {
     return res.status(400).json({
       success: false,
-      message: "invalid inputs",
+      message: 'invalid inputs',
       data: null,
-      error: parseData.error.flatten()
+      error: parseData.error.flatten(),
     })
   }
 
@@ -67,23 +67,22 @@ export const addRoom = async (req, res) => {
       VALUES ($1, $2, $3, $4, $5, $6)
       RETURNING id, hotel_id, room_number, room_type, price_per_night, max_occupancy
     `
-  
-    const values = [id, hotelId, roomNumber, roomType, pricePerNight, maxOccupancy, ]
-  
-    const {rows} = await pool.query(query, values)
-  
+
+    const values = [id, hotelId, roomNumber, roomType, pricePerNight, maxOccupancy]
+
+    const { rows } = await pool.query(query, values)
+
     return res.status(201).json({
       success: true,
-      message: "new room created",
+      message: 'new room created',
       data: rows[0],
     })
-
   } catch (error) {
     return res.status(500).json({
       success: false,
-      message: "internal server error",
+      message: 'internal server error',
       data: null,
-      error: error.message
+      error: error.message,
     })
   }
 }

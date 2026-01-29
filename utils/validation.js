@@ -25,7 +25,7 @@ export const addRoomSchema = z.object({
   roomNumber: z.string().min(1),
   roomType: z.string().min(1),
   pricePerNight: z.number().int().positive(),
-  maxOccupancy: z.number().int().positive()
+  maxOccupancy: z.number().int().positive(),
 })
 
 export const createBookingSchema = z.object({
