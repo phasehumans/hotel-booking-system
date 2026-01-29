@@ -1,0 +1,206 @@
+{
+  "info": {
+    "_postman_id": "9ded2f22-101e-4ed6-b468-26ee909dfb96",
+    "name": "Hotel Booking System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "43250119"
+  },
+  "item": [
+    {
+      "name": "signup",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Vikram Singh\",\r\n  \"email\": \"vikram.singh@royalinn.com\",\r\n  \"password\": \"vikram@hotel\",\r\n  \"role\": \"owner\",\r\n  \"phone\": \"+919833445566\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "127.0.0.1:3000/api/auth/signup",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "auth",
+            "signup"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"customer@gmail.com\",\r\n  \"password\": \"pass123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "127.0.0.1:3000/api/auth/login",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create hotel",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIyODRjNmE3LTFlMTYtNDMyOC04ODY2LWNkZmVkMGYwMjNjNSIsInJvbGUiOiJvd25lciIsImlhdCI6MTc2OTU5NjQwNn0.wOMualIWjD28yR2rMEyi-k-9Fi610Tw2dU07zpja2bQ",
+            "type": "text"
+          },
+          {
+            "key": "token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY0ODQzODk2LWU4MjEtNGU1MC05ZDZkLTBhMWMxZGE0YTIwYiIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTc2OTU5NjcxN30.YMuEPv0nXfai9paINoR8U3SskBn3u2DV63Cv6o5lRBk",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"City Comfort Inn\",\r\n  \"description\": \"Affordable stay with clean rooms and quick city access\",\r\n  \"city\": \"Nagpur\",\r\n  \"country\": \"India\",\r\n  \"amenities\": [\"wifi\", \"parking\", \"room_service\"]\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "127.0.0.1:3000/api/hotels/",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "hotels",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create room",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIyODRjNmE3LTFlMTYtNDMyOC04ODY2LWNkZmVkMGYwMjNjNSIsInJvbGUiOiJvd25lciIsImlhdCI6MTc2OTU5NjQwNn0.wOMualIWjD28yR2rMEyi-k-9Fi610Tw2dU07zpja2bQ",
+            "type": "text"
+          },
+          {
+            "key": "token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY0ODQzODk2LWU4MjEtNGU1MC05ZDZkLTBhMWMxZGE0YTIwYiIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTc2OTU5NjcxN30.YMuEPv0nXfai9paINoR8U3SskBn3u2DV63Cv6o5lRBk",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"City Comfort Inn\",\r\n  \"description\": \"Affordable stay with clean rooms and quick city access\",\r\n  \"city\": \"Nagpur\",\r\n  \"country\": \"India\",\r\n  \"amenities\": [\"wifi\", \"parking\", \"room_service\"]\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "127.0.0.1:3000/api/hotels/",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "hotels",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create room Copy",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIyODRjNmE3LTFlMTYtNDMyOC04ODY2LWNkZmVkMGYwMjNjNSIsInJvbGUiOiJvd25lciIsImlhdCI6MTc2OTU5NjQwNn0.wOMualIWjD28yR2rMEyi-k-9Fi610Tw2dU07zpja2bQ",
+            "type": "text"
+          },
+          {
+            "key": "token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY0ODQzODk2LWU4MjEtNGU1MC05ZDZkLTBhMWMxZGE0YTIwYiIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTc2OTU5NjcxN30.YMuEPv0nXfai9paINoR8U3SskBn3u2DV63Cv6o5lRBk",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"City Comfort Inn\",\r\n  \"description\": \"Affordable stay with clean rooms and quick city access\",\r\n  \"city\": \"Nagpur\",\r\n  \"country\": \"India\",\r\n  \"amenities\": [\"wifi\", \"parking\", \"room_service\"]\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "127.0.0.1:3000/api/hotels/",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "hotels",
+            ""
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
