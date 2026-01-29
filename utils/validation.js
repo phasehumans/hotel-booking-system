@@ -29,9 +29,13 @@ export const addRoomSchema = z.object({
 })
 
 export const createBookingSchema = z.object({
-  
+  roomId: z.string().uuid(),
+  checkInDate: z.string().date(),
+  checkOutDate: z.string().date(),
 })
 
 export const createReviewSchema = z.object({
-
+  hotelId: z.string().uuid(),
+  rating: z.number().int().min(1).max(5),
+  comment: z.string().min(10),
 })

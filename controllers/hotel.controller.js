@@ -88,6 +88,63 @@ export const addRoom = async (req, res) => {
   }
 }
 
-export const getHotels = async (req, res) => {}
+export const getHotels = async (req, res) => {
+  try {
+    const query = `
+      SELECT id, owner_id, name, description, city, country, amenities, rating, total_reviews
+      FROM hotels
+    `
 
-export const getHotelById = async (req, res) => {}
+    const { rows } = await pool.query(query)
+
+    return res.status(200).json({
+      success: true,
+      message: 'hotels retrieved',
+      data: rows,
+    })
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: 'internal server error',
+      data: null,
+      error: error.message,
+    })
+  }
+}
+
+export const getHotelById = async (req, res) => {
+  const { hotelId } = req.params
+
+  try {
+    const query = `
+      SELECT id, owner_id, name, description, city, country, amenities, rating, total_reviews
+      FROM hotels
+      WHERE id = $1
+    `
+
+    const values = [hotelId]
+
+    const { rows } = await pool.query(query, values)
+
+    if (rows.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: 'hotel not found',
+        data: null,
+      })
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: 'hotel retrieved',
+      data: rows[0],
+    })
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: 'internal server error',
+      data: null,
+      error: error.message,
+    })
+  }
+}
